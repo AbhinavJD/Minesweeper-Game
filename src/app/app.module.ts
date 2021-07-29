@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MineswepperComponent } from './mineswepper/mineswepper.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MineswepperComponent
   ],
   imports: [
     BrowserModule,

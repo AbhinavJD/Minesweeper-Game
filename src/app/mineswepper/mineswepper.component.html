@@ -1,0 +1,35 @@
+<div class="page-wrapper">
+    <div class="page-container">
+        <div class="game-heading">
+            <span class="title">Mine Sweeper</span>
+        </div>
+        <div class="dashboard-details ">
+            <div class="score-container">
+                <div class="win-container metric">
+                    <div class="label">Won</div>
+                    <div class="label">0</div>
+                </div>
+                <div class="lose-container metric">
+                    <div class="label">Lost</div>
+                    <div class="label">{{lost}}</div>
+                </div>
+                <div class="lose-container metric">
+                    <div class="label">Mines</div>
+                    <div class="label">{{totalMines}}</div>
+                </div>
+            </div>
+            <div class="reset-start">
+                <button type="button" class="btn btn-success" [ngClass]="{disable: startDisableBtn}" (click)="startGame()">Start</button>
+                <button type="button" class="btn btn-warning" [ngClass]="{disable: !startDisableBtn}" (click)="resetGame()">Reset</button>
+            </div>
+        </div>
+        <div class="game-area" *ngIf="startDisableBtn">
+            <div class="rows-{{rowIndex}} row" *ngFor="let gameRowArray of gameDataValueArray; let rowIndex = index">
+                <div class="cell-{{colIndex}} col clickArea" [ngClass]="{clicked: showAllCellValue, BombRed: gamecolumnValue == 'B' && highlightBombColor}" *ngFor="let gamecolumnValue of gameRowArray; let colIndex = index" (click)='clickedOnCell(rowIndex, colIndex, $event)' (contextmenu)="onRightClick($event)">{{gamecolumnValue}}</div>
+            </div>
+        </div>
+        <div class="game-area" *ngIf="!startDisableBtn">
+            <div class="loading"> Click on Start to Play</div>
+        </div>
+    </div>
+</div>
