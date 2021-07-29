@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-const TOTAL_COLUMNS = 10
-const TOTAL_ROWS = 10
-const TOTAL_BOMB = 10
+const TOTAL_COLUMNS = 10 // configure for increase or decrease column count
+const TOTAL_ROWS = 10 // configure for increase or decrease row count
+const TOTAL_BOMB = 10 // configure for increase or decrease Bomb count
 @Component({
   selector: 'app-mineswepper',
   templateUrl: './mineswepper.component.html',
@@ -29,8 +29,6 @@ export class MineswepperComponent implements OnInit {
     for (let index = 0; index < TOTAL_ROWS; index++) {
       let rowWiseColumnValueArray = [];
       for (let index = 0; index < TOTAL_COLUMNS; index++) {
-        // const randNumber = Math.floor((Math.random() * 3) + 1);
-        // rowWiseColumnValueArray.push(randNumber);
         rowWiseColumnValueArray.push(0);
       }
       this.gameDataValueArray.push(rowWiseColumnValueArray);
@@ -44,7 +42,6 @@ export class MineswepperComponent implements OnInit {
       const colRandNumber = Math.floor((Math.random() * TOTAL_COLUMNS));
       gameDataArray[rowRandNumber][colRandNumber] = 'B'
     }
-    console.log('plot bomb: ', gameDataArray);
   }
   //get hints where the bomb is
   getHintData(gameDataArray){
@@ -57,7 +54,6 @@ export class MineswepperComponent implements OnInit {
         }
       }
     }
-    console.log('hintdata: ', gameDataArray)
   }
   //checking neighbours cells present or not
   checkIfPreviousNeighbourExists(dataArray, row, col){
@@ -72,7 +68,6 @@ export class MineswepperComponent implements OnInit {
       if(tempRow != -1 && tempCol != -1 && tempRow != dataArray.length && tempCol != dataArray[tempRow].length){
         let val = this.checkValueForValuesInCell(dataArray, tempRow, tempCol)
         dataArray[tempRow][tempCol] = val
-        //tempCol += 1
       }
       tempCol += 1
     }
@@ -84,7 +79,6 @@ export class MineswepperComponent implements OnInit {
       if(tempRow != -1 && tempCol != -1 && tempRow != dataArray.length && tempCol != dataArray[tempRow].length){
         let val = this.checkValueForValuesInCell(dataArray, tempRow, tempCol)
         dataArray[tempRow][tempCol] = val
-        //tempCol += 1
       }
       tempCol += 1
     }
@@ -96,7 +90,6 @@ export class MineswepperComponent implements OnInit {
       if(tempRow != -1 && tempCol != -1 && tempRow != dataArray.length && tempCol != dataArray[tempRow].length){
         let val = this.checkValueForValuesInCell(dataArray, tempRow, tempCol)
         dataArray[tempRow][tempCol] = val
-        //tempCol += 1
       }
       tempCol += 1
     }
@@ -184,68 +177,3 @@ export class MineswepperComponent implements OnInit {
     return false;
   }
 }
-
-
-// let previousRow;
-//     let nextRow;
-//     let previousCol;
-//     let nextCol;
-//     if(row - 1 != -1) {
-//       previousRow = row - 1
-//     } else {
-//       previousRow = row
-//     }
-//     if(row != dataArray.length) {
-//       nextRow = row + 1
-//     } else {
-//       nextRow = row
-//     }
-//     if(col - 1 != -1) {
-//       previousCol = col - 1 
-//     } else {
-//       previousCol = col
-//     }
-//     if(col != dataArray.length) {
-//       nextCol = col + 1
-//     } else {
-//       nextCol = col
-//     }
-//     // previous row
-//     if(dataArray[previousRow][previousCol] != undefined){
-//       let val = this.checkValueForValuesInCell(dataArray, previousRow, previousCol)
-//       dataArray[previousRow][previousCol] = val;
-//     }
-//     if(dataArray[previousRow][col] != undefined ){
-//       let val = this.checkValueForValuesInCell(dataArray, previousRow, col)
-//       dataArray[previousRow][col] = val;
-//     }
-//     if(dataArray[previousRow][nextCol] != undefined ){
-//       let val = this.checkValueForValuesInCell(dataArray, previousRow, nextCol)
-//       dataArray[previousRow][nextCol] = val;
-//     }
-//     // currentRow
-//     if(dataArray[row][previousCol] != undefined ){
-//       let val = this.checkValueForValuesInCell(dataArray, row, previousCol)
-//       dataArray[row][previousCol] = val;
-//     }
-//     if(dataArray[row][col] != undefined){
-//       let val = this.checkValueForValuesInCell(dataArray, row, col)
-//       dataArray[row][col] = val;
-//     }
-//     if(dataArray[row][nextCol] != undefined ){
-//       let val = this.checkValueForValuesInCell(dataArray, row, nextCol)
-//       dataArray[row][nextCol] = val;
-//     }
-//     // next row
-//     if(dataArray[nextRow][previousCol] != undefined ){
-//       let val = this.checkValueForValuesInCell(dataArray, nextRow, previousCol)
-//       dataArray[nextRow][previousCol] = val;
-//     }
-//     if(dataArray[nextRow][col] != undefined ){
-//       let val = this.checkValueForValuesInCell(dataArray, nextRow, col)
-//       dataArray[nextRow][col] = val;
-//     }
-//     if(dataArray[nextRow][nextCol] != undefined ){
-//       let val = this.checkValueForValuesInCell(dataArray, nextRow, nextCol)
-//       dataArray[nextRow][nextCol] = val;
-//     }
